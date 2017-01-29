@@ -1,8 +1,9 @@
 <template>
-  <td class="square">
-    <tree v-if="element === 'tree'" />
-    <tent v-if="element === 'tent'" />
-    <grass v-if="element === ''" />
+  <td class="square grass" v-on:click="onClick">
+    <tree v-if="element.selected === 'tree'" />
+    <tent v-if="element.selected === 'tent'" />
+    <grass v-if="element.selected === 'grass'" />
+    <empty v-if="element.selected === ''"/>
   </td>
 </template>
 
@@ -11,21 +12,28 @@
 import Tent from '../Tent';
 import Tree from '../Tree';
 import Grass from '../Grass';
+import Empty from '../Empty';
 
 export default {
   name: 'square',
-  props: ['element'],
+  props: ['element', 'onClick'],
   components: {
     Tent,
     Tree,
     Grass,
+    Empty,
   },
 };
 </script>
 
 <style scoped>
 .square {
-  background-color: #CFF09E;
   border: 2px solid white;
 }
+
+.square:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
 </style>

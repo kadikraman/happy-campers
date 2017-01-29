@@ -1,17 +1,17 @@
 <template>
-  <svg class="grass" width="30px" height="30px">
+  <svg class="empty" width="30px" height="30px">
   </svg>
 </template>
 
 <script>
 export default {
-  name: 'grass',
+  name: 'empty',
 };
 </script>
 
 <style scoped>
-.grass {
+.empty {
   display: block;
-  background-color: #CFF09E;
+  background-color: #E9E9E9;
 }
 </style>
