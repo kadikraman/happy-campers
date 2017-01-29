@@ -1,17 +1,22 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <tent />
+    <tree />
+    <grass />
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello';
+import Tent from './components/Tent';
+import Tree from './components/Tree';
+import Grass from './components/Grass';
 
 export default {
   name: 'app',
   components: {
-    Hello,
+    Tent,
+    Tree,
+    Grass,
   },
 };
 </script>
@@ -21,8 +26,5 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
