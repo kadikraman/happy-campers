@@ -1,30 +1,39 @@
 <template>
   <div id="app">
-    <tent />
-    <tree />
-    <grass />
+    <table class="table">
+      <tr v-for="row in grid">
+        <square v-for="item in row" v-bind:element="item"> </square>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
-import Tent from './components/Tent';
-import Tree from './components/Tree';
-import Grass from './components/Grass';
+import Square from './components/Square';
 
 export default {
   name: 'app',
   components: {
-    Tent,
-    Tree,
-    Grass,
+    Square,
   },
+  data: () => ({
+    grid: [
+      ['', '', '', '', '', 'tent', 'tree', ''],
+      ['tree', '', 'tree', '', 'tree', '', '', ''],
+      ['', '', 'tree', 'tent', '', '', '', ''],
+      ['tree', '', '', '', '', 'tree', '', ''],
+      ['', '', '', '', '', '', 'tree', ''],
+      ['', '', '', 'tree', '', '', '', ''],
+      ['tent', 'tree', '', '', 'tree', '', '', ''],
+      ['', '', '', '', '', '', '', 'tree'],
+    ],
+  }),
 };
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.table {
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 </style>

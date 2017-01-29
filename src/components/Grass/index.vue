@@ -1,5 +1,5 @@
 <template>
-  <svg class="grass" width="50px" height="50px">
+  <svg class="grass" width="30px" height="30px">
   </svg>
 </template>
 
@@ -11,10 +11,6 @@ export default {
 
 <style scoped>
 .grass {
-  padding: 5px;
-  margin: 2px;
-  border: 1px solid grey;
-  border-radius: 5px;
-  background-color: #CFF09E;
+  display: block;
 }
 </style>
