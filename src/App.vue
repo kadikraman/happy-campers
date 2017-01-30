@@ -5,7 +5,7 @@
         <square
           v-for="(column, columnIndex) in row"
           v-bind:element="column"
-          v-bind:onClick="onClick(rowIndex, columnIndex)"
+          v-bind:onClick="() => onClick({ row: rowIndex, column: columnIndex })"
         ></square>
       </tr>
     </table>
@@ -13,42 +13,16 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex';
 import Square from './components/Square';
-import initialGrid from './initialGrid';
-
-const state = {
-  grid: initialGrid,
-};
-
-const store = {
-  onClick: (row, column) => {
-    switch (state.grid[row][column].selected) {
-      case '':
-        state.grid[row][column].selected = 'grass';
-        break;
-      case 'grass':
-        state.grid[row][column].selected = 'tent';
-        break;
-      case 'tent':
-        state.grid[row][column].selected = '';
-        break;
-      default:
-        break;
-    }
-  },
-};
 
 export default {
   name: 'app',
   components: {
     Square,
   },
-  data: () => ({
-    onClick: (row, column) => () => {
-      store.onClick(row, column);
-    },
-    grid: state.grid,
-  }),
+  computed: mapState(['grid']),
+  methods: mapActions(['onClick']),
 };
 </script>
 

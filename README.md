@@ -1,4 +1,4 @@
-# happy-campers
+# Happy Campers
 
 > A game about camping and trees
 
