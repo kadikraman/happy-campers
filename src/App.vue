@@ -15,6 +15,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import Square from './components/Square';
+import { TOGGLE } from './store/mutations';
 
 export default {
   name: 'app',
@@ -22,7 +23,7 @@ export default {
     Square,
   },
   computed: mapState(['grid']),
-  methods: mapActions(['onClick']),
+  methods: mapActions({ onClick: TOGGLE }),
 };
 </script>
 
