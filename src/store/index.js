@@ -1,6 +1,7 @@
 import Vuex, { Store } from 'vuex';
 import initialGrid from './initialGrid';
-import mutations, { TOGGLE } from './mutations';
+import mutations from './mutations';
+import { TOGGLE } from './mutationTypes';
 
 export default (Vue) => {
   Vue.use(Vuex);

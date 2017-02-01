@@ -10,7 +10,7 @@ module.exports = {
     'html'
   ],
   // check if imports actually resolve
-  'settings': {
+  settings: {
     'import/resolver': {
       'webpack': {
         'config': 'build/webpack.base.conf.js'
@@ -18,7 +18,7 @@ module.exports = {
     }
   },
   // add your custom rules here
-  'rules': {
+  rules: {
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       'js': 'never',
@@ -26,5 +26,12 @@ module.exports = {
     }],
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
-  }
+  },
+  globals: {
+    expect: true,
+    sinon: true
+  },
+  env: {
+    mocha: true
+  },
 }

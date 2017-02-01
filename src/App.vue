@@ -15,7 +15,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import Square from './components/Square';
-import { TOGGLE } from './store/mutations';
+import { TOGGLE } from './store/mutationTypes';
 
 export default {
   name: 'app',

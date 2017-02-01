@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
-// mutation types
-export const TOGGLE = 'grid/TOGGLE';
+import { TOGGLE } from './mutationTypes';
 
 export default {
   [TOGGLE]: (state, { row, column }) => {
