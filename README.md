@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/kadikraman/happy-campers.svg?branch=master)](https://travis-ci.org/kadikraman/happy-campers)
+
 # Happy Campers
 
 > A game about camping and trees
