@@ -12,6 +12,7 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "vue": "^2.1.0",
     "vuex": "^2.1.1"
   },

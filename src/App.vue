@@ -24,7 +24,7 @@ import Square from './components/Square';
 import Number from './components/Number';
 
 import { TOGGLE } from './store/mutationTypes';
-import { getTentsInRow } from './functions';
+import { getTentsInRow, getTentsInColumn } from './functions';
 
 export default {
   name: 'app',
@@ -35,7 +35,7 @@ export default {
   computed: mapState({
     grid: state => state.grid,
     tentsInRow: state => getTentsInRow(state.grid),
-    tentsInColumn: state => state.grid.map(() => 2),
+    tentsInColumn: state => getTentsInColumn(state.grid),
   }),
   methods: mapActions({ onClick: TOGGLE }),
 };
