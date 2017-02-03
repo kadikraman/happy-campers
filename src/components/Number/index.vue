@@ -17,5 +17,7 @@ export default {
   border: 2px solid white;
   text-align: center;
   line-height: 30px;
+  color: #919998;
+  font-size: 12px;
 }
 </style>

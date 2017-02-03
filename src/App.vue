@@ -47,6 +47,7 @@ export default {
   height: 350px;
   margin: 0 auto;
   margin-top: 50px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .table {
