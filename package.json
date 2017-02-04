@@ -9,7 +9,8 @@
     "build": "node build/build.js",
     "test": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test-dev": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "coveralls": "cat test/unit/coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "lodash": "^4.17.4",
