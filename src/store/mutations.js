@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 
 import { TOGGLE } from './mutationTypes';
+import { isSolved, getTentsInRow, getTentsInColumn } from './game';
 
 export default {
   [TOGGLE]: (state, { row, column }) => {
@@ -17,5 +18,10 @@ export default {
       default:
         break;
     }
+
+    // TODO: move this into its own method/mutation
+    state.tentsInRow = getTentsInRow(state.grid);
+    state.tentsInColumn = getTentsInColumn(state.grid);
+    state.solved = isSolved(state.grid);
   },
 };

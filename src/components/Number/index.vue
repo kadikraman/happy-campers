@@ -1,5 +1,8 @@
 <template>
-  <div class="number">{{text.numShouldBe}}</div>
+  <div
+    class="number"
+    v-bind:class="{ valid: text.numSelected === text.numShouldBe, invalid: text.numSelected > text.numShouldBe }"
+  >{{text.numShouldBe}}</div>
 </template>
 
 <script>
@@ -19,5 +22,13 @@ export default {
   line-height: 30px;
   color: #919998;
   font-size: 12px;
+}
+
+.invalid {
+  color: #E64D66;
+}
+
+.valid {
+  color: #5ED367;
 }
 </style>
