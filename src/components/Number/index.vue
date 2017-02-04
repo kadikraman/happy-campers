@@ -1,5 +1,5 @@
 <template>
-  <div class="number">{{text}}</div>
+  <div class="number">{{text.numShouldBe}}</div>
 </template>
 
 <script>
