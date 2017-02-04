@@ -9,9 +9,7 @@ describe('mutations', () => {
       };
       const payload = { row: 0, column: 1 };
       mutations[TOGGLE](state, payload);
-      expect(state).to.deep.equal({
-        grid: [[{ selected: '' }, { selected: 'tent' }]],
-      });
+      expect(state.grid).to.deep.equal([[{ selected: '' }, { selected: 'tent' }]]);
     });
 
     it('toggles empty tiles correctly', () => {
@@ -20,9 +18,7 @@ describe('mutations', () => {
       };
       const payload = { row: 0, column: 1 };
       mutations[TOGGLE](state, payload);
-      expect(state).to.deep.equal({
-        grid: [[{ selected: '' }, { selected: 'grass' }]],
-      });
+      expect(state.grid).to.deep.equal([[{ selected: '' }, { selected: 'grass' }]]);
     });
 
     it('does not modify tree tiles', () => {
@@ -31,7 +27,7 @@ describe('mutations', () => {
       };
       const payload = { row: 0, column: 1 };
       mutations[TOGGLE](state, payload);
-      expect(state).to.deep.equal(state);
+      expect(state.grid).to.deep.equal(state.grid);
     });
   });
 });
