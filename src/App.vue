@@ -31,11 +31,7 @@ export default {
     Square,
     Number,
   },
-  computed: mapState({
-    grid: state => state.grid,
-    tentsInRow: state => state.tentsInRow,
-    tentsInColumn: state => state.tentsInColumn,
-  }),
+  computed: mapState(['grid', 'tentsInRow', 'tentsInColumn']),
   methods: mapActions({ onClick: TOGGLE }),
 };
 </script>
