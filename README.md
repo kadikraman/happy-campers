@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/kadikraman/happy-campers.svg?branch=master)](https://travis-ci.org/kadikraman/happy-campers)
+[![Coverage Status](https://coveralls.io/repos/github/kadikraman/happy-campers/badge.svg?branch=master)](https://coveralls.io/github/kadikraman/happy-campers?branch=master)
 
 # Happy Campers
 
