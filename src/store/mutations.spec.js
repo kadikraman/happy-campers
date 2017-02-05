@@ -1,5 +1,5 @@
 import mutations from './mutations';
-import { TOGGLE } from './mutationTypes';
+import { TOGGLE, RESET } from './mutationTypes';
 
 describe('mutations', () => {
   describe('TOGGLE', () => {
@@ -27,6 +27,33 @@ describe('mutations', () => {
       };
       const payload = { row: 0, column: 1 };
       mutations[TOGGLE](state, payload);
+      expect(state.grid).to.deep.equal(state.grid);
+    });
+  });
+
+  describe('RESET', () => {
+    it('resets the grid to an untouched state', () => {
+      const state = {
+        grid: [[{ selected: 'tent', shouldBe: 'tent' }, { selected: 'grass', shouldBe: 'grass' }]],
+        solved: true,
+        tentsInRow: [{ numSelected: 1, numShouldBe: 1 }],
+        tentsInColumn: [{ numSelected: 1, numShouldBe: 1 }],
+      };
+      const expectedState = {
+        grid: [[{ selected: '', shouldBe: 'tent' }, { selected: '', shouldBe: 'grass' }]],
+        solved: false,
+        tentsInRow: [{ numSelected: 0, numShouldBe: 1 }],
+        tentsInColumn: [{ numSelected: 0, numShouldBe: 1 }, { numSelected: 0, numShouldBe: 0 }],
+      };
+      mutations[RESET](state);
+      expect(state).to.deep.equal(expectedState);
+    });
+
+    it('does not reset trees', () => {
+      const state = {
+        grid: [[{ selected: 'tree' }]],
+      };
+      mutations[RESET](state);
       expect(state.grid).to.deep.equal(state.grid);
     });
   });

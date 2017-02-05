@@ -11,10 +11,11 @@
         <square
           v-for="(column, columnIndex) in row"
           v-bind:element="column"
-          v-bind:onClick="() => onClick({ row: rowIndex, column: columnIndex })"
+          v-bind:onClick="() => toggle({ row: rowIndex, column: columnIndex })"
         ></square>
       </tr>
     </table>
+    <reset v-bind:onClick="() => reset()" />
   </div>
 </template>
 
@@ -22,17 +23,19 @@
 import { mapState, mapActions } from 'vuex';
 import Square from './components/Square';
 import Number from './components/Number';
+import Reset from './components/Reset';
 
-import { TOGGLE } from './store/mutationTypes';
+import { TOGGLE, RESET } from './store/mutationTypes';
 
 export default {
   name: 'app',
   components: {
     Square,
     Number,
+    Reset,
   },
   computed: mapState(['grid', 'tentsInRow', 'tentsInColumn']),
-  methods: mapActions({ onClick: TOGGLE }),
+  methods: mapActions({ toggle: TOGGLE, reset: RESET }),
 };
 </script>
 
