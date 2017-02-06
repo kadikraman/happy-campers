@@ -45,8 +45,8 @@ export default {
 
 <style>
 #app {
-  width: 380px;
-  height: 350px;
+  width: 600px;
+  height: 600px;
   margin: 0 auto;
   margin-top: 50px;
   font-family: 'Roboto', sans-serif;
@@ -64,6 +64,6 @@ export default {
 
 .settingPanel {
   float: right;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <svg class="tent" width="30px" height="30px" viewBox="0 0 460 460" style="enable-background:new 0 0 460 460;">
+  <svg class="tent" width="50px" height="50px" viewBox="0 0 460 460" style="enable-background:new 0 0 460 460;">
     	<polygon style="fill:#CB9851;" points="212.407,112.85 281.46,0 307.058,15.662 247.591,112.852"/>
     	<polygon style="fill:#FFC052;" points="247.591,112.852 178.54,0 152.942,15.662 212.407,112.85 230,122.851"/>
     	<polygon style="fill:#AF2B12;" points="247.59,112.85 430,410.5 440,435.25 430,460 382.99,460 367.99,450 352.99,460 305.98,460 210,286.425 230,112.85"/>

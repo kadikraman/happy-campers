@@ -1,5 +1,5 @@
 <template>
-  <svg class="grass" width="30px" height="30px">
+  <svg class="grass" width="50px" height="50px">
   </svg>
 </template>
 

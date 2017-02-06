@@ -14,14 +14,14 @@ export default {
 
 <style scoped>
 .number {
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
   display: block;
   border: 2px solid white;
   text-align: center;
-  line-height: 30px;
+  line-height: 60px;
   color: #919998;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .invalid {
