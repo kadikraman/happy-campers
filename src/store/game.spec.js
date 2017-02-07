@@ -1,4 +1,4 @@
-import { isSolved, getTentsInRow, getTentsInColumn } from './game';
+import { isSolved, getTentsInRow, getTentsInColumn, hasBeenEdited } from './game';
 
 describe('game', () => {
   describe('#isSolved', () => {
@@ -44,6 +44,24 @@ describe('game', () => {
         { numSelected: 0, numShouldBe: 1 },
       ];
       expect(getTentsInColumn(input)).to.deep.equal(expected);
+    });
+  });
+
+  describe('#hasBeenEdited', () => {
+    it('calculates whether the grid has been edited correctly if it has not been', () => {
+      const input = [
+        [{ selected: '', shouldBe: 'tent' }, { selected: '', shouldBe: '' }],
+        [{ selected: 'tree', shouldBe: 'tree' }, { selected: '', shouldBe: 'tent' }],
+      ];
+      expect(hasBeenEdited(input)).to.equal(false);
+    });
+
+    it('calculates whether the grid has been edited correctly if it has been', () => {
+      const input = [
+        [{ selected: 'tent', shouldBe: 'tent' }, { selected: '', shouldBe: '' }],
+        [{ selected: 'tree', shouldBe: 'tree' }, { selected: '', shouldBe: 'tent' }],
+      ];
+      expect(hasBeenEdited(input)).to.equal(true);
     });
   });
 });

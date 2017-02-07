@@ -19,3 +19,15 @@ export const getTentsInRow = grid => grid.map(row => row.reduce((acc, item) => (
 }), { numSelected: 0, numShouldBe: 0 }));
 
 export const getTentsInColumn = grid => flow(zip, getTentsInRow)(...grid);
+
+export const hasBeenEdited = (grid) => {
+  let edited = false;
+  grid.forEach((row) => {
+    row.forEach((item) => {
+      if (item.selected !== '' && item.selected !== 'tree') {
+        edited = true;
+      }
+    });
+  });
+  return edited;
+};
