@@ -36,12 +36,14 @@ describe('mutations', () => {
       const state = {
         grid: [[{ selected: 'tent', shouldBe: 'tent' }, { selected: 'grass', shouldBe: 'grass' }]],
         solved: true,
+        hasBeenEdited: true,
         tentsInRow: [{ numSelected: 1, numShouldBe: 1 }],
         tentsInColumn: [{ numSelected: 1, numShouldBe: 1 }],
       };
       const expectedState = {
         grid: [[{ selected: '', shouldBe: 'tent' }, { selected: '', shouldBe: 'grass' }]],
         solved: false,
+        hasBeenEdited: false,
         tentsInRow: [{ numSelected: 0, numShouldBe: 1 }],
         tentsInColumn: [{ numSelected: 0, numShouldBe: 1 }, { numSelected: 0, numShouldBe: 0 }],
       };

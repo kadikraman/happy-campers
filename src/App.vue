@@ -18,7 +18,7 @@
       </table>
     </div>
     <div class="settingPanel">
-      <reset v-bind:onClick="() => reset()" />
+      <reset v-bind:onClick="() => reset()" v-bind:disabled="!hasBeenEdited" />
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@ export default {
     Number,
     Reset,
   },
-  computed: mapState(['grid', 'tentsInRow', 'tentsInColumn']),
+  computed: mapState(['grid', 'tentsInRow', 'tentsInColumn', 'hasBeenEdited']),
   methods: mapActions({ toggle: TOGGLE, reset: RESET }),
 };
 </script>

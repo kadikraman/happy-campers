@@ -10,6 +10,7 @@ export default () => new Store({
     isSolved: isSolved(initialGrid),
     tentsInRow: getTentsInRow(initialGrid),
     tentsInColumn: getTentsInColumn(initialGrid),
+    hasBeenEdited: false,
   },
   mutations,
   actions: {
