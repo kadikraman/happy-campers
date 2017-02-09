@@ -1,5 +1,5 @@
 import mutations from './mutations';
-import { TOGGLE, RESET } from './mutationTypes';
+import { TOGGLE, RESET, SHOW_ANSWERS } from './mutationTypes';
 
 describe('mutations', () => {
   describe('TOGGLE', () => {
@@ -57,6 +57,19 @@ describe('mutations', () => {
       };
       mutations[RESET](state);
       expect(state.grid).to.deep.equal(state.grid);
+    });
+  });
+
+  describe('SHOW_ANSWERS', () => {
+    it('sets showAnswers to true', () => {
+      const state = {
+        showAnswers: false,
+      };
+      const expectedState = {
+        showAnswers: true,
+      };
+      mutations[SHOW_ANSWERS](state);
+      expect(state).to.deep.equal(expectedState);
     });
   });
 });

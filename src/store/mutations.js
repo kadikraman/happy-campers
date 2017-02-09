@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 
-import { TOGGLE, RESET } from './mutationTypes';
+import { TOGGLE, RESET, SHOW_ANSWERS } from './mutationTypes';
 import { isSolved, getTentsInRow, getTentsInColumn, hasBeenEdited } from './game';
 
 export default {
@@ -39,5 +39,8 @@ export default {
     state.tentsInColumn = getTentsInColumn(state.grid);
     state.solved = isSolved(state.grid);
     state.hasBeenEdited = hasBeenEdited(state.grid);
+  },
+  [SHOW_ANSWERS]: (state) => {
+    state.showAnswers = true;
   },
 };
