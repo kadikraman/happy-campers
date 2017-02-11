@@ -5,7 +5,7 @@ export const isSolved = (grid) => {
   let solved = true;
   grid.forEach((row) => {
     row.forEach((item) => {
-      if (item.selected !== item.shouldBe) {
+      if (item.selected !== item.shouldBe && item.selected !== 'tree') {
         solved = false;
       }
     });

@@ -7,7 +7,7 @@ import { isSolved, getTentsInRow, getTentsInColumn } from './game';
 export default () => new Store({
   state: {
     grid: initialGrid,
-    isSolved: isSolved(initialGrid),
+    solved: isSolved(initialGrid),
     tentsInRow: getTentsInRow(initialGrid),
     tentsInColumn: getTentsInColumn(initialGrid),
     hasBeenEdited: false,

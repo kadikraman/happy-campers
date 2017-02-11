@@ -5,7 +5,7 @@ describe('game', () => {
     it('returns true if the given grid is solved', () => {
       const grid = [
         [{ selected: 'tent', shouldBe: 'tent' }, { selected: '', shouldBe: '' }],
-        [{ selected: 'tree', shouldBe: 'tree' }, { selected: 'tent', shouldBe: 'tent' }],
+        [{ selected: 'tree' }, { selected: 'tent', shouldBe: 'tent' }],
       ];
       expect(isSolved(grid)).to.equal(true);
     });
@@ -13,7 +13,7 @@ describe('game', () => {
     it('returns false if the given grid is not solved', () => {
       const grid = [
         [{ selected: '', shouldBe: 'tent' }, { selected: '', shouldBe: '' }],
-        [{ selected: 'tree', shouldBe: 'tree' }, { selected: 'tent', shouldBe: 'tent' }],
+        [{ selected: 'tree' }, { selected: 'tent', shouldBe: 'tent' }],
       ];
       expect(isSolved(grid)).to.equal(false);
     });

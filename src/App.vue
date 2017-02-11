@@ -13,6 +13,7 @@
             v-for="(column, columnIndex) in row"
             v-bind:element="column"
             v-bind:onClick="() => toggle({ row: rowIndex, column: columnIndex })"
+            v-bind:solved="solved"
           ></square>
         </tr>
       </table>
@@ -38,7 +39,7 @@ export default {
     Number,
     Reset,
   },
-  computed: mapState(['grid', 'tentsInRow', 'tentsInColumn', 'hasBeenEdited']),
+  computed: mapState(['grid', 'tentsInRow', 'tentsInColumn', 'hasBeenEdited', 'solved']),
   methods: mapActions({ toggle: TOGGLE, reset: RESET }),
 };
 </script>

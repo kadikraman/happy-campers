@@ -1,5 +1,5 @@
 <template>
-  <td class="square grass" v-on:click="onClick">
+  <td v-bind:class="{ solved: solved, square: true, grass: true }" v-on:click="onClick">
     <tree v-if="element.selected === 'tree'" />
     <tent v-if="element.selected === 'tent'" />
     <grass v-if="element.selected === 'grass'" />
@@ -16,7 +16,7 @@ import Empty from '../Empty';
 
 export default {
   name: 'square',
-  props: ['element', 'onClick'],
+  props: ['element', 'onClick', 'solved'],
   components: {
     Tent,
     Tree,
@@ -34,6 +34,11 @@ export default {
 .square:hover {
   opacity: .6;
   cursor: pointer;
+}
+
+.solved {
+  background-color: #CFF09E;
+  border-color: #CFF09E;
 }
 
 </style>
