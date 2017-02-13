@@ -1,32 +1,52 @@
 <template>
   <td v-bind:class="{ solved: solved, square: true, grass: true }" v-on:click="onClick">
-    <tree v-if="element.selected === 'tree'" />
-    <tent v-if="element.selected === 'tent'" />
-    <grass v-if="element.selected === 'grass'" />
-    <empty v-if="element.selected === ''"/>
+    <svg v-if="element.selected === 'tree'" class="icon" viewBox="0 0 511.998 511.998">
+      <path style="fill:#91CC04;" d="M412.659,176.848c6.124-15.223,9.314-31.567,9.314-48.066C421.973,57.771,364.205,0,293.197,0 c-12.822-0.002-25.324,1.871-37.198,5.427c-25.473,7.629-48.049,23.035-64.627,44.516C127.866,54.542,77.575,108.67,77.575,174.544 c0,34.181,13.49,66.302,37.374,89.783c2.726,51.479,45.464,92.52,97.606,92.52c6.869,0,13.615-0.735,20.171-2.107 c8.118-1.699,15.931-4.406,23.273-8.048c8.356-4.146,16.109-9.477,23.004-15.889c0.09,0.051,0.18,0.098,0.268,0.147 c15.481,8.788,33.044,13.481,51.2,13.481c57.319,0,103.952-46.635,103.952-103.956C434.423,217.349,426.638,194.94,412.659,176.848z"/>
+      <path style="fill:#A78966;" d="M255.999,346.692c-7.342,3.641-15.155,6.347-23.273,8.048v133.986 c0,12.853,10.42,23.273,23.273,23.273c12.853,0,23.273-10.42,23.273-23.273V330.952c-0.088-0.051-0.178-0.098-0.268-0.147 C272.109,337.216,264.356,342.547,255.999,346.692z"/>
+      <path style="fill:#79AB03;" d="M191.372,49.943c-63.507,4.599-113.797,58.728-113.797,124.601c0,34.181,13.49,66.302,37.374,89.783 c2.726,51.479,45.464,92.52,97.606,92.52c6.869,0,13.615-0.735,20.171-2.107c8.118-1.699,15.931-4.406,23.273-8.048V5.427 C230.526,13.058,207.95,28.463,191.372,49.943z"/>
+    </svg>
+
+    <svg v-if="element.selected === 'tent'" class="icon" viewBox="0 0 460 460">
+    	<polygon style="fill:#CB9851;" points="212.407,112.85 281.46,0 307.058,15.662 247.591,112.852"/>
+    	<polygon style="fill:#FFC052;" points="247.591,112.852 178.54,0 152.942,15.662 212.407,112.85 230,122.851"/>
+    	<polygon style="fill:#AF2B12;" points="247.59,112.85 430,410.5 440,435.25 430,460 382.99,460 367.99,450 352.99,460 305.98,460 210,286.425 230,112.85"/>
+    	<polygon style="fill:#DA521B;" points="230,112.85 230,295 154.02,460 107.01,460 92.01,450 77.01,460 30,460 20,435.25 30,410.5 212.41,112.85"/>
+    	<path style="fill:#3C261B;" d="M290.98,370.98l-15,89.02H230l-10-75l10-75C263.68,310,290.98,337.3,290.98,370.98 z"/>
+    	<path style="fill:#624950;" d="M230,310v150h-45.98l-15-89.02C169.02,337.3,196.32,310,230,310z"/>
+    	<path style="fill:#CB9851;" d="M305.98,370.98V460h-30v-89.02c0-25.35-20.63-45.98-45.98-45.98l-10-15l10-15 C271.89,295,305.98,329.08,305.98,370.98z"/>
+    	<path style="fill:#FFC052;" d="M230,295v30c-25.35,0-45.98,20.63-45.98,45.98V460h-30v-89.02 C154.02,329.08,188.11,295,230,295z"/>
+    	<rect y="410.5" style="fill:#FFC052;" width="30" height="49.5"/>
+    	<rect x="77.01" y="410.5" style="fill:#FFC052;" width="30" height="49.5"/>
+    	<rect x="352.99" y="410.5" style="fill:#CB9851;" width="30" height="49.5"/>
+    	<rect x="430" y="410.5" style="fill:#CB9851;" width="30" height="49.5"/>
+    </svg>
+
+    <svg v-if="element.selected === 'grass'" class="icon"></svg>
+
+    <svg v-if="element.selected === ''" class="icon empty"></svg>
   </td>
 </template>
 
 
 <script>
-import Tent from '../Tent';
-import Tree from '../Tree';
-import Grass from '../Grass';
-import Empty from '../Empty';
-
 export default {
   name: 'square',
   props: ['element', 'onClick', 'solved'],
-  components: {
-    Tent,
-    Tree,
-    Grass,
-    Empty,
-  },
 };
 </script>
 
 <style scoped>
+svg.icon {
+  display: block;
+  background-color: #CFF09E;
+  width: 50px;
+  height: 50px;
+}
+
+svg.empty {
+  background-color: #E9E9E9;
+}
+
 .square {
   border: 2px solid white;
 }
