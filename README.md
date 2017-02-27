@@ -3,6 +3,8 @@
 
 # Happy Campers
 
+Designs in Sketch available here: https://sketch.cloud/s/KQE2
+
 > A game about camping and trees
 
 ## Build Setup
