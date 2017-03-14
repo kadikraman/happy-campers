@@ -112,8 +112,7 @@ body {
 }
 
 .instructions {
-  margin-top: 50px;
-  padding: 10px;
+  padding: 30px 10px;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -132,6 +131,6 @@ p {
   font-size: 36px;
   font-weight: bold;
   color: #8B572A;
-  margin: 50px 0 20px 0;
+  padding-bottom: 20px;
 }
 </style>

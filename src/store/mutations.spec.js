@@ -25,6 +25,15 @@ describe('mutations', () => {
       ]);
     });
 
+    it('toggles tent tiles correctly', () => {
+      const state = {
+        grid: [[{ selected: '' }, { selected: 'tent' }]],
+      };
+      const payload = { row: 0, column: 1 };
+      mutations[TOGGLE](state, payload);
+      expect(state.grid).to.deep.equal([[{ selected: '' }, { selected: '' }]]);
+    });
+
     it('does not modify tree tiles', () => {
       const state = {
         grid: [[{ selected: '' }, { selected: 'tree' }]],
