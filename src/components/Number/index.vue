@@ -14,12 +14,12 @@ export default {
 
 <style scoped>
 .number {
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
   display: block;
   border: 2px solid white;
   text-align: center;
-  line-height: 60px;
+  line-height: 35px;
   color: #919998;
   font-size: 18px;
 }

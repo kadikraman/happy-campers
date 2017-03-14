@@ -39,8 +39,8 @@ export default {
 svg.icon {
   display: block;
   background-color: #CFF09E;
-  width: 50px;
-  height: 50px;
+  height: 35px;
+  width: 35px;
 }
 
 svg.empty {

@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <h1>Happy Campers</h1>
-    <p>a logic puzzle where you match up campers with trees!</p>
+    <div class="header">
+      <div class="title">Happy Campers</div>
+      <div class="subtext">a logic puzzle matching up campers and trees.</div>
+    </div>
     <div id="game">
       <div class="tableContainer">
         <table class="table">
@@ -26,7 +28,7 @@
       </div>
     </div>
     <div class="instructions">
-      <h1>Instuctions</h1>
+      <div class="instructionsTitle">Instructions</div>
       <div class="instructionTitle">Scene</div>
       <p>Before you is a map of a campsite with locations of all the trees clearly marked.</p>
       <div class="instructionTitle">Goal</div>
@@ -65,14 +67,32 @@ export default {
 #app {
   font-family: 'Roboto', sans-serif;
   user-select: none;
-  max-width: 800px;
   margin: 0 auto;
-  padding: 50px 0;
+}
+
+body {
+  margin: 0;
+}
+
+.header {
+  background-color: #8B572A;
+  height: 70px;
+  padding: 10px 0 0 20px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
+.subtext {
+  color: #FFFFFF;
 }
 
 #game {
-  width: 600px;
-  height: 500px;
+  width: 450px;
+  height: 400px;
   margin: 0 auto;
   margin-top: 30px;
 }
@@ -93,12 +113,9 @@ export default {
 
 .instructions {
   margin-top: 50px;
-}
-
-h1 {
-  font-size: 36px;
-  font-weight: bold;
-  color: #91CC04;
+  padding: 10px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 p {
@@ -109,5 +126,12 @@ p {
   font-size: 18px;
   font-weight: bold;
   color: #F6A623;
+}
+
+.instructionsTitle {
+  font-size: 36px;
+  font-weight: bold;
+  color: #8B572A;
+  margin: 50px 0 20px 0;
 }
 </style>
