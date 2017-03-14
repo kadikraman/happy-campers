@@ -25,6 +25,9 @@ yarn unit
 # run all tests
 yarn test
 
+# run all tests with a watcher
+yarn test:watch
+
 # run linter
 yarn lint
 

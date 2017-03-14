@@ -9,7 +9,7 @@
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
     "test": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
-    "test-dev": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
+    "test:watch": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
     "lint:fix": "eslint --fix --ext .js,.vue src test/unit/specs",
     "prettier": "prettier-check --single-quote --trailing-comma es5 \"src/**/*.js\"",
@@ -92,6 +92,7 @@
   "lint-staged": {
     "*.js": [
       "yarn lint:fix",
+      "yarn prettier:fix",
       "git add"
     ]
   }
