@@ -1,7 +1,12 @@
 /* eslint-disable no-param-reassign */
 
 import { TOGGLE, RESET, SHOW_ANSWERS } from './mutationTypes';
-import { isSolved, getTentsInRow, getTentsInColumn, hasBeenEdited } from './game';
+import {
+  isSolved,
+  getTentsInRow,
+  getTentsInColumn,
+  hasBeenEdited,
+} from './game';
 
 export default {
   [TOGGLE]: (state, { row, column }) => {
@@ -25,9 +30,9 @@ export default {
     state.solved = isSolved(state.grid);
     state.hasBeenEdited = hasBeenEdited(state.grid);
   },
-  [RESET]: (state) => {
-    state.grid.forEach((row) => {
-      row.forEach((item) => {
+  [RESET]: state => {
+    state.grid.forEach(row => {
+      row.forEach(item => {
         if (item.selected !== 'tree') {
           item.selected = '';
         }
@@ -40,7 +45,7 @@ export default {
     state.solved = isSolved(state.grid);
     state.hasBeenEdited = hasBeenEdited(state.grid);
   },
-  [SHOW_ANSWERS]: (state) => {
+  [SHOW_ANSWERS]: state => {
     state.showAnswers = true;
   },
 };

@@ -9,7 +9,9 @@ describe('mutations', () => {
       };
       const payload = { row: 0, column: 1 };
       mutations[TOGGLE](state, payload);
-      expect(state.grid).to.deep.equal([[{ selected: '' }, { selected: 'tent' }]]);
+      expect(state.grid).to.deep.equal([
+        [{ selected: '' }, { selected: 'tent' }],
+      ]);
     });
 
     it('toggles empty tiles correctly', () => {
@@ -18,7 +20,9 @@ describe('mutations', () => {
       };
       const payload = { row: 0, column: 1 };
       mutations[TOGGLE](state, payload);
-      expect(state.grid).to.deep.equal([[{ selected: '' }, { selected: 'grass' }]]);
+      expect(state.grid).to.deep.equal([
+        [{ selected: '' }, { selected: 'grass' }],
+      ]);
     });
 
     it('does not modify tree tiles', () => {
@@ -34,18 +38,31 @@ describe('mutations', () => {
   describe('RESET', () => {
     it('resets the grid to an untouched state', () => {
       const state = {
-        grid: [[{ selected: 'tent', shouldBe: 'tent' }, { selected: 'grass', shouldBe: 'grass' }]],
+        grid: [
+          [
+            { selected: 'tent', shouldBe: 'tent' },
+            { selected: 'grass', shouldBe: 'grass' },
+          ],
+        ],
         solved: true,
         hasBeenEdited: true,
         tentsInRow: [{ numSelected: 1, numShouldBe: 1 }],
         tentsInColumn: [{ numSelected: 1, numShouldBe: 1 }],
       };
       const expectedState = {
-        grid: [[{ selected: '', shouldBe: 'tent' }, { selected: '', shouldBe: 'grass' }]],
+        grid: [
+          [
+            { selected: '', shouldBe: 'tent' },
+            { selected: '', shouldBe: 'grass' },
+          ],
+        ],
         solved: false,
         hasBeenEdited: false,
         tentsInRow: [{ numSelected: 0, numShouldBe: 1 }],
-        tentsInColumn: [{ numSelected: 0, numShouldBe: 1 }, { numSelected: 0, numShouldBe: 0 }],
+        tentsInColumn: [
+          { numSelected: 0, numShouldBe: 1 },
+          { numSelected: 0, numShouldBe: 0 },
+        ],
       };
       mutations[RESET](state);
       expect(state).to.deep.equal(expectedState);

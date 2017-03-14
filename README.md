@@ -11,19 +11,31 @@ Designs in Sketch available here: https://sketch.cloud/s/KQE2
 
 ``` bash
 # install dependencies
-npm install
+yarn install
 
 # serve with hot reload at localhost:8080
-npm run dev
+yarn dev
 
 # build for production with minification
-npm run build
+yarn build
 
 # run unit tests
-npm run unit
+yarn unit
 
 # run all tests
-npm test
+yarn test
+
+# run linter
+yarn lint
+
+# fix linting errors
+yarn lint:fix
+
+# run code formatter
+yarn prettier
+
+# autofix code formatting
+yarn prettier:fix
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

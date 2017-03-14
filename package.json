@@ -10,6 +10,9 @@
     "test": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test-dev": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js",
     "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "lint:fix": "eslint --fix --ext .js,.vue src test/unit/specs",
+    "prettier": "prettier-check --single-quote --trailing-comma es5 \"src/**/*.js\"",
+    "prettier:fix": "prettier --single-quote --trailing-comma es5 --write \"src/**/*.js\"",
     "coveralls": "cat test/unit/coverage/lcov.info | coveralls"
   },
   "dependencies": {
@@ -63,6 +66,8 @@
     "opn": "^4.0.2",
     "ora": "^0.3.0",
     "phantomjs-prebuilt": "^2.1.3",
+    "prettier": "^0.22.0",
+    "prettier-check": "^1.0.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.4",
     "sinon": "^1.17.3",
