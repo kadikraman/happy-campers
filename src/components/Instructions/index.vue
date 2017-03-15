@@ -62,9 +62,15 @@ export default {
 }
 
 .title {
-  font-size: 36px;
+  font-size: 24px;
   font-weight: bold;
   color: #8B572A;
   padding-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 36px;
+  }
 }
 </style>

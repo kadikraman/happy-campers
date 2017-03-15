@@ -35,40 +35,34 @@ body {
 
 .header {
   background-color: #8B572A;
-  height: 70px;
-  padding: 10px 0 0 20px;
+  height: 60px;
+  padding: 20px 0 0 20px;
 }
 
 .title {
-  font-size: 36px;
+  font-size: 24px;
   font-weight: bold;
   color: #FFFFFF;
 }
 
 .subtext {
+  font-size: 12px;
   color: #FFFFFF;
 }
 
-.instructions {
-  padding: 30px 10px;
-  max-width: 800px;
-  margin: 0 auto;
-}
+@media (min-width: 768px) {
+  .header {
+    background-color: #8B572A;
+    height: 70px;
+    padding: 10px 0 0 20px;
+  }
 
-p {
-  color: #919998;
-}
+  .title {
+    font-size: 36px;
+  }
 
-.instructionTitle {
-  font-size: 18px;
-  font-weight: bold;
-  color: #F6A623;
-}
-
-.instructionsTitle {
-  font-size: 36px;
-  font-weight: bold;
-  color: #8B572A;
-  padding-bottom: 20px;
+  .subtext {
+    font-size: 16px;
+  }
 }
 </style>
