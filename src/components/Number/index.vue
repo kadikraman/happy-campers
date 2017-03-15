@@ -14,12 +14,12 @@ export default {
 
 <style scoped>
 .number {
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   display: block;
   border: 2px solid white;
   text-align: center;
-  line-height: 35px;
+  line-height: 30px;
   color: #919998;
   font-size: 18px;
 }
@@ -30,5 +30,13 @@ export default {
 
 .valid {
   color: #5ED367;
+}
+
+@media (min-width: 768px) {
+  .number {
+    height: 35px;
+    width: 35px;
+    line-height: 35px;
+  }
 }
 </style>

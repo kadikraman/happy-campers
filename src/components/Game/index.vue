@@ -46,8 +46,8 @@ export default {
 
 <style scoped>
 .game {
-  width: 450px;
-  height: 400px;
+  width: 350px;
+  height: 420px;
   margin: 0 auto;
   margin-top: 30px;
 }
@@ -58,11 +58,27 @@ export default {
 }
 
 .tableContainer {
-  float: left;
+  float: none;
 }
 
 .settingPanel {
-  float: right;
-  margin-top: 60px;
+  float: none;
+  margin: 10px 0 0 40px;
+}
+
+@media (min-width: 768px) {
+  .tableContainer {
+    float: left;
+  }
+
+  .settingPanel {
+    float: right;
+    margin: 60px 0 0 0;
+  }
+
+  .game {
+    height: 400px;
+    width: 450px;
+  }
 }
 </style>

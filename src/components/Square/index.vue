@@ -39,8 +39,8 @@ export default {
 svg.icon {
   display: block;
   background-color: #CFF09E;
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
 }
 
 svg.empty {
@@ -59,6 +59,13 @@ svg.empty {
 .solved {
   background-color: #CFF09E;
   border-color: #CFF09E;
+}
+
+@media (min-width: 768px) {
+  svg.icon {
+    height: 35px;
+    width: 35px;
+  }
 }
 
 </style>
