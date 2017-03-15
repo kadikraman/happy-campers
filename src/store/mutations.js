@@ -1,12 +1,27 @@
 /* eslint-disable no-param-reassign */
 
-import { TOGGLE, RESET, SHOW_ANSWERS } from './mutationTypes';
+import {
+  TOGGLE,
+  RESET,
+  SHOW_ANSWERS,
+  NEXT_GRID,
+  PREVIOUS_GRID,
+  NAVIGATE,
+} from './mutationTypes';
+
 import {
   isSolved,
   getTentsInRow,
   getTentsInColumn,
   hasBeenEdited,
 } from './game';
+
+const updateGridStats = state => {
+  state.tentsInRow = getTentsInRow(state.grid);
+  state.tentsInColumn = getTentsInColumn(state.grid);
+  state.solved = isSolved(state.grid);
+  state.hasBeenEdited = hasBeenEdited(state.grid);
+};
 
 export default {
   [TOGGLE]: (state, { row, column }) => {
@@ -23,12 +38,7 @@ export default {
       default:
         break;
     }
-
-    // TODO: move this into its own method/mutation
-    state.tentsInRow = getTentsInRow(state.grid);
-    state.tentsInColumn = getTentsInColumn(state.grid);
-    state.solved = isSolved(state.grid);
-    state.hasBeenEdited = hasBeenEdited(state.grid);
+    updateGridStats(state);
   },
   [RESET]: state => {
     state.grid.forEach(row => {
@@ -38,14 +48,31 @@ export default {
         }
       });
     });
-
-    // TODO: move this into its own method/mutation
-    state.tentsInRow = getTentsInRow(state.grid);
-    state.tentsInColumn = getTentsInColumn(state.grid);
-    state.solved = isSolved(state.grid);
-    state.hasBeenEdited = hasBeenEdited(state.grid);
+    updateGridStats(state);
   },
   [SHOW_ANSWERS]: state => {
     state.showAnswers = true;
+  },
+  [NEXT_GRID]: state => {
+    const newGridId = state.grids[state.currentGridId + 1]
+      ? state.currentGridId + 1
+      : 0;
+    state.grid = state.grids[newGridId];
+    state.currentGridId = newGridId;
+    updateGridStats(state);
+  },
+  [PREVIOUS_GRID]: state => {
+    const newGridId = state.grids[state.currentGridId - 1]
+      ? state.currentGridId - 1
+      : state.grids.length - 1;
+    state.grid = state.grids[newGridId];
+    state.currentGridId = newGridId;
+    updateGridStats(state);
+  },
+  [NAVIGATE]: (state, { id }) => {
+    const newGridId = id;
+    state.grid = state.grids[newGridId];
+    state.currentGridId = newGridId;
+    updateGridStats(state);
   },
 };

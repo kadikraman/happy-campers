@@ -20,6 +20,8 @@
     </div>
     <div class="settingPanel">
       <reset v-bind:onClick="() => reset()" v-bind:disabled="!hasBeenEdited" />
+      <div class="icon" v-on:click="nextGrid"><chevronRight /></div>
+      <div class="icon" v-on:click="previousGrid"><chevronLeft /></div>
     </div>
   </div>
 </template>
@@ -28,9 +30,11 @@
 import { mapState, mapActions } from 'vuex';
 import Square from '../Square';
 import Number from '../Number';
-import Reset from '../Reset';
+import Reset from '../Icons/Reset';
+import ChevronRight from '../Icons/ChevronRight';
+import ChevronLeft from '../Icons/ChevronLeft';
 
-import { TOGGLE, RESET } from '../../store/mutationTypes';
+import { TOGGLE, RESET, NEXT_GRID, PREVIOUS_GRID } from '../../store/mutationTypes';
 
 export default {
   name: 'game',
@@ -38,13 +42,25 @@ export default {
     Square,
     Number,
     Reset,
+    ChevronRight,
+    ChevronLeft,
   },
   computed: mapState(['grid', 'tentsInRow', 'tentsInColumn', 'hasBeenEdited', 'solved']),
-  methods: mapActions({ toggle: TOGGLE, reset: RESET }),
+  methods: mapActions({
+    toggle: TOGGLE,
+    reset: RESET,
+    nextGrid: NEXT_GRID,
+    previousGrid: PREVIOUS_GRID,
+  }),
 };
 </script>
 
 <style scoped>
+
+.icon {
+  display: none;
+}
+
 .game {
   width: 350px;
   height: 420px;
@@ -79,6 +95,19 @@ export default {
   .game {
     height: 400px;
     width: 450px;
+  }
+
+  .icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-top: 30px;
+    margin-left: 5px;
+  }
+
+  .icon:hover {
+    opacity: 0.6;
+    cursor: pointer;
   }
 }
 </style>

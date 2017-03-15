@@ -8,6 +8,7 @@
       </div>
     </div>
     <game />
+    <navigation />
     <instructions />
   </div>
 </template>
@@ -16,6 +17,7 @@
 import Game from './components/Game';
 import Tent from './components/Icons/Tent';
 import Instructions from './components/Instructions';
+import Navigation from './components/Navigation';
 
 export default {
   name: 'app',
@@ -23,6 +25,7 @@ export default {
     Game,
     Instructions,
     Tent,
+    Navigation,
   },
 };
 </script>

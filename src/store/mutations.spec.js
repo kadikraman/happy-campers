@@ -1,5 +1,12 @@
 import mutations from './mutations';
-import { TOGGLE, RESET, SHOW_ANSWERS } from './mutationTypes';
+import {
+  TOGGLE,
+  RESET,
+  SHOW_ANSWERS,
+  NEXT_GRID,
+  PREVIOUS_GRID,
+  NAVIGATE,
+} from './mutationTypes';
 
 describe('mutations', () => {
   describe('TOGGLE', () => {
@@ -96,6 +103,115 @@ describe('mutations', () => {
       };
       mutations[SHOW_ANSWERS](state);
       expect(state).to.deep.equal(expectedState);
+    });
+  });
+
+  describe('NEXT_GRID', () => {
+    const currentGrid = [[{ selected: '', shouldBe: 'tree' }]];
+    const newGrid = [[{ selected: '', shouldBe: 'tent' }]];
+    const newestGrid = [[{ selected: '', shouldBe: 'grass' }]];
+
+    it('displays the next grid', () => {
+      const state = {
+        grid: currentGrid,
+        currentGridId: 0,
+        grids: [currentGrid, newGrid, newestGrid],
+      };
+      const expectedState = {
+        grid: newGrid,
+        currentGridId: 1,
+        grids: [currentGrid, newGrid, newestGrid],
+      };
+      mutations[NEXT_GRID](state);
+
+      expect(state.grid).to.deep.equal(expectedState.grid);
+      expect(state.currentGridId).to.deep.equal(expectedState.currentGridId);
+      expect(state.grids).to.deep.equal(expectedState.grids);
+    });
+
+    it('goes back to first grid if there are no more grids available', () => {
+      const state = {
+        grid: newestGrid,
+        currentGridId: 2,
+        grids: [currentGrid, newGrid, newestGrid],
+      };
+      const expectedState = {
+        grid: currentGrid,
+        currentGridId: 0,
+        grids: [currentGrid, newGrid, newestGrid],
+      };
+      mutations[NEXT_GRID](state);
+
+      expect(state.grid).to.deep.equal(expectedState.grid);
+      expect(state.currentGridId).to.deep.equal(expectedState.currentGridId);
+      expect(state.grids).to.deep.equal(expectedState.grids);
+    });
+  });
+
+  describe('PREVIOUS_GRID', () => {
+    const currentGrid = [[{ selected: '', shouldBe: 'tree' }]];
+    const newGrid = [[{ selected: '', shouldBe: 'tent' }]];
+    const newestGrid = [[{ selected: '', shouldBe: 'grass' }]];
+
+    it('displays the previous grid', () => {
+      const state = {
+        grid: currentGrid,
+        currentGridId: 1,
+        grids: [newGrid, currentGrid, newestGrid],
+      };
+      const expectedState = {
+        grid: newGrid,
+        currentGridId: 0,
+        grids: [newGrid, currentGrid, newestGrid],
+      };
+
+      mutations[PREVIOUS_GRID](state);
+      expect(state.grid).to.deep.equal(expectedState.grid);
+      expect(state.currentGridId).to.deep.equal(expectedState.currentGridId);
+      expect(state.grids).to.deep.equal(expectedState.grids);
+    });
+
+    it('displays the last grid if there are no more preceeding grids', () => {
+      const state = {
+        grid: newGrid,
+        currentGridId: 0,
+        grids: [newGrid, currentGrid, newestGrid],
+      };
+      const expectedState = {
+        grid: newestGrid,
+        currentGridId: 2,
+        grids: [newGrid, currentGrid, newestGrid],
+      };
+
+      mutations[PREVIOUS_GRID](state);
+      expect(state.grid).to.deep.equal(expectedState.grid);
+      expect(state.currentGridId).to.deep.equal(expectedState.currentGridId);
+      expect(state.grids).to.deep.equal(expectedState.grids);
+    });
+  });
+
+  describe('NAVIGATE', () => {
+    const currentGrid = [[{ selected: '', shouldBe: 'tree' }]];
+    const newGrid = [[{ selected: '', shouldBe: 'tent' }]];
+    const newestGrid = [[{ selected: '', shouldBe: 'grass' }]];
+
+    it('navigates to the correct grid', () => {
+      const state = {
+        grid: newestGrid,
+        currentGridId: 2,
+        grids: [newGrid, currentGrid, newestGrid],
+      };
+      const payload = { id: 1 };
+      const expectedState = {
+        grid: currentGrid,
+        currentGridId: 1,
+        grids: [newGrid, currentGrid, newestGrid],
+      };
+
+      mutations[NAVIGATE](state, payload);
+      expect(state.grid).to.deep.equal(expectedState.grid);
+      expect(state.currentGridId).to.deep.equal(expectedState.currentGridId);
+      expect(state.grids).to.deep.equal(expectedState.grids);
     });
   });
 });
