@@ -1,6 +1,13 @@
 <template>
   <div class="game">
     <div class="tableContainer">
+      <div v-if="showVictory" class="victory">
+        <div class="victoryContent">
+          <div class="victoryClose" v-on:click="hideVictory">X</div>
+          <h1 class="victoryTitle">You Win!</h1>
+          <div class="playNext" v-on:click="nextGrid">play next</div>
+        </div>
+      </div>
       <table class="table">
         <tr>
           <td v-for="(column, columnIndex) in grid[0].length + 1">
@@ -34,7 +41,13 @@ import Reset from '../Icons/Reset';
 import ChevronRight from '../Icons/ChevronRight';
 import ChevronLeft from '../Icons/ChevronLeft';
 
-import { TOGGLE, RESET, NEXT_GRID, PREVIOUS_GRID } from '../../store/mutationTypes';
+import {
+  TOGGLE,
+  RESET,
+  NEXT_GRID,
+  PREVIOUS_GRID,
+  HIDE_VICTORY,
+} from '../../store/mutationTypes';
 
 export default {
   name: 'game',
@@ -45,12 +58,13 @@ export default {
     ChevronRight,
     ChevronLeft,
   },
-  computed: mapState(['grid', 'tentsInRow', 'tentsInColumn', 'hasBeenEdited', 'solved']),
+  computed: mapState(['grid', 'tentsInRow', 'tentsInColumn', 'hasBeenEdited', 'solved', 'showVictory']),
   methods: mapActions({
     toggle: TOGGLE,
     reset: RESET,
     nextGrid: NEXT_GRID,
     previousGrid: PREVIOUS_GRID,
+    hideVictory: HIDE_VICTORY,
   }),
 };
 </script>
@@ -75,6 +89,47 @@ export default {
 
 .tableContainer {
   float: none;
+  position: relative;
+}
+
+.victory {
+  position: absolute;
+  height: 150px;
+  width: 200px;
+  left: 72px;
+  top: 95px;
+  background-color: #CFF09E;
+  border: 8px solid white;
+}
+
+.victoryContent {
+  text-align: center;
+}
+
+.victoryTitle {
+  color: #91CC04;
+}
+
+.victoryClose {
+  color: #F6A623;
+  text-align: right;
+  margin: 10px;
+}
+
+.victoryClose:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.playNext {
+  color: #F6A623;
+  border-bottom: 1px solid #F6A623;
+  display: inline-block;
+}
+
+.playNext:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 .settingPanel {
@@ -108,6 +163,11 @@ export default {
   .icon:hover {
     opacity: 0.6;
     cursor: pointer;
+  }
+
+  .victory {
+    left: 100px;
+    top: 120px;
   }
 }
 </style>

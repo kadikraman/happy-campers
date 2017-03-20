@@ -6,6 +6,7 @@ import {
   NEXT_GRID,
   PREVIOUS_GRID,
   NAVIGATE,
+  HIDE_VICTORY,
 } from './mutationTypes';
 
 describe('mutations', () => {
@@ -45,9 +46,26 @@ describe('mutations', () => {
       const state = {
         grid: [[{ selected: '' }, { selected: 'tree' }]],
       };
+      const expectedState = {
+        grid: [[{ selected: '' }, { selected: 'tree' }]],
+      };
       const payload = { row: 0, column: 1 };
       mutations[TOGGLE](state, payload);
-      expect(state.grid).to.deep.equal(state.grid);
+      expect(state.grid).to.deep.equal(expectedState.grid);
+    });
+
+    it('does not modify tiles if the puzzle is solved', () => {
+      const state = {
+        grid: [[{ selected: 'tent', shouldBe: 'tent' }, { selected: 'tree' }]],
+        solved: true,
+      };
+      const expectedState = {
+        grid: [[{ selected: 'tent', shouldBe: 'tent' }, { selected: 'tree' }]],
+        solved: true,
+      };
+      const payload = { row: 0, column: 0 };
+      mutations[TOGGLE](state, payload);
+      expect(state).to.deep.equal(expectedState);
     });
   });
 
@@ -74,6 +92,7 @@ describe('mutations', () => {
         ],
         solved: false,
         hasBeenEdited: false,
+        showVictory: false,
         tentsInRow: [{ numSelected: 0, numShouldBe: 1 }],
         tentsInColumn: [
           { numSelected: 0, numShouldBe: 1 },
@@ -212,6 +231,16 @@ describe('mutations', () => {
       expect(state.grid).to.deep.equal(expectedState.grid);
       expect(state.currentGridId).to.deep.equal(expectedState.currentGridId);
       expect(state.grids).to.deep.equal(expectedState.grids);
+    });
+  });
+
+  describe('HIDE_VICTORY', () => {
+    it('sets showVictory to false', () => {
+      const state = { showVictory: true };
+      const expectedState = { showVictory: false };
+
+      mutations[HIDE_VICTORY](state);
+      expect(state).to.deep.equal(expectedState);
     });
   });
 });

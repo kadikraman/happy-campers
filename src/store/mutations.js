@@ -7,6 +7,7 @@ import {
   NEXT_GRID,
   PREVIOUS_GRID,
   NAVIGATE,
+  HIDE_VICTORY,
 } from './mutationTypes';
 
 import {
@@ -21,24 +22,27 @@ const updateGridStats = state => {
   state.tentsInColumn = getTentsInColumn(state.grid);
   state.solved = isSolved(state.grid);
   state.hasBeenEdited = hasBeenEdited(state.grid);
+  state.showVictory = isSolved(state.grid);
 };
 
 export default {
   [TOGGLE]: (state, { row, column }) => {
-    switch (state.grid[row][column].selected) {
-      case '':
-        state.grid[row][column].selected = 'grass';
-        break;
-      case 'grass':
-        state.grid[row][column].selected = 'tent';
-        break;
-      case 'tent':
-        state.grid[row][column].selected = '';
-        break;
-      default:
-        break;
+    if (!state.solved) {
+      switch (state.grid[row][column].selected) {
+        case '':
+          state.grid[row][column].selected = 'grass';
+          break;
+        case 'grass':
+          state.grid[row][column].selected = 'tent';
+          break;
+        case 'tent':
+          state.grid[row][column].selected = '';
+          break;
+        default:
+          break;
+      }
+      updateGridStats(state);
     }
-    updateGridStats(state);
   },
   [RESET]: state => {
     state.grid.forEach(row => {
@@ -74,5 +78,8 @@ export default {
     state.grid = state.grids[newGridId];
     state.currentGridId = newGridId;
     updateGridStats(state);
+  },
+  [HIDE_VICTORY]: state => {
+    state.showVictory = false;
   },
 };

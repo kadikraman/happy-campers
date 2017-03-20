@@ -11,6 +11,7 @@ import {
   NEXT_GRID,
   PREVIOUS_GRID,
   NAVIGATE,
+  HIDE_VICTORY,
 } from './mutationTypes';
 import { isSolved, getTentsInRow, getTentsInColumn } from './game';
 
@@ -24,6 +25,7 @@ export default () =>
       tentsInRow: getTentsInRow(grid0),
       tentsInColumn: getTentsInColumn(grid0),
       hasBeenEdited: false,
+      showVictory: isSolved(grid0),
     },
     mutations,
     actions: {
@@ -32,5 +34,6 @@ export default () =>
       [NEXT_GRID]: ({ commit }) => commit(NEXT_GRID),
       [PREVIOUS_GRID]: ({ commit }) => commit(PREVIOUS_GRID),
       [NAVIGATE]: ({ commit }, payload) => commit(NAVIGATE, payload),
+      [HIDE_VICTORY]: ({ commit }) => commit(HIDE_VICTORY),
     },
   });

@@ -48,6 +48,11 @@ svg.empty {
   border-color: #CFF09E;
 }
 
+.solved:hover {
+  opacity: 1;
+  cursor: default;
+}
+
 @media (min-width: 768px) {
   svg.icon {
     height: 35px;
