@@ -17,12 +17,19 @@ import {
   hasBeenEdited,
 } from './game';
 
+import { addSolvedGrid, getSolvedGridIds } from './localStorage';
+
 const updateGridStats = state => {
   state.tentsInRow = getTentsInRow(state.grid);
   state.tentsInColumn = getTentsInColumn(state.grid);
   state.solved = isSolved(state.grid);
   state.hasBeenEdited = hasBeenEdited(state.grid);
   state.showVictory = isSolved(state.grid);
+
+  if (state.solved) {
+    addSolvedGrid(state.currentGridId);
+    state.solvedGridIds = getSolvedGridIds();
+  }
 };
 
 export default {

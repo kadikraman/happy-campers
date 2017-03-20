@@ -3,7 +3,7 @@
     <span v-for="(grid, gridIndex) in grids">
       <div
         class="point"
-        v-bind:class="{ selected: gridIndex === currentGridId }"
+        v-bind:class="{ selected: gridIndex === currentGridId, solved: solvedGridIds.indexOf(gridIndex) >= 0 }"
         v-on:click="navigate({ id: gridIndex })">
       </div>
     </span>
@@ -21,7 +21,7 @@ export default {
   components: {
     Number,
   },
-  computed: mapState(['grids', 'currentGridId']),
+  computed: mapState(['grids', 'currentGridId', 'solvedGridIds']),
   methods: mapActions({
     navigate: NAVIGATE,
   }),
@@ -56,5 +56,9 @@ export default {
   .selected {
     width: 25px;
     height: 25px;
+  }
+
+  .solved {
+    background-color: #CFF09E;
   }
 </style>

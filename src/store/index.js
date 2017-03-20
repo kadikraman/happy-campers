@@ -14,6 +14,7 @@ import {
   HIDE_VICTORY,
 } from './mutationTypes';
 import { isSolved, getTentsInRow, getTentsInColumn } from './game';
+import { getSolvedGridIds } from './localStorage';
 
 export default () =>
   new Store({
@@ -26,6 +27,7 @@ export default () =>
       tentsInColumn: getTentsInColumn(grid0),
       hasBeenEdited: false,
       showVictory: isSolved(grid0),
+      solvedGridIds: getSolvedGridIds(),
     },
     mutations,
     actions: {
